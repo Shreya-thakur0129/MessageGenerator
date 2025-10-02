@@ -10,9 +10,13 @@ app = FastAPI()
 # Configure CORS to allow requests from your Vue frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:8080",
+        "https://messagegenerator.netlify.app",
+        "https://www.messagegenerator.netlify.app"
+    ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
