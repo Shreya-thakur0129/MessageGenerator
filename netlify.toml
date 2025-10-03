@@ -3,6 +3,9 @@
   publish = "frontend/app/dist"
   command = "npm run build"
 
+[build.environment]
+  VUE_APP_API_URL = "https://messagegenerator-backend.onrender.com"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
