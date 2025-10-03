@@ -791,7 +791,7 @@ export default {
         if (this.imageUrl) {
           try {
             const token = localStorage.getItem('token'); // or however you're storing it
-            const downloadUrl = new URL("http://localhost:8000/download-media");
+            const downloadUrl = new URL(`${process.env.VUE_APP_API_URL}/download-media`);
             downloadUrl.searchParams.append("media_url", this.imageUrl);
 
             const response = await fetch(downloadUrl.toString(), {

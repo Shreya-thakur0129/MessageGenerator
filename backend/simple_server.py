@@ -12,8 +12,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:8080",
-        "https://messagegenerator.netlify.app",
-        "https://www.messagegenerator.netlify.app"
+        "https://messagedisplay.netlify.app",
+        "https://www.messagedisplay.netlify.app"
     ],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],

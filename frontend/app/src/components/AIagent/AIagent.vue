@@ -21,7 +21,7 @@ export default {
       this.messages.push({ role: "user", text: this.inputMessage });
 
       try {
-        const response = await axios.post("http://127.0.0.1:8000/chat", {
+        const response = await axios.post(`${process.env.VUE_APP_API_URL}/chat`, {
           message: this.inputMessage,
         });
         this.messages.push({ role: "assistant", text: response.data.response });
