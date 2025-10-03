@@ -1,6 +1,6 @@
 [build]
   publish = "frontend/app/dist"
-  command = "cd frontend/app && npm run build"
+  command = "cd frontend/app && npm install && npm run build"
 
 [build.environment]
   VUE_APP_API_URL = "https://messagegenerator-backend.onrender.com"
