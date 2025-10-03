@@ -190,7 +190,7 @@ export default {
   async created() {
     try {
       // Fetch groups from backend when component is created
-      const response = await axios.get('http://127.0.0.1:8000/groups');
+      const response = await axios.get(`${process.env.VUE_APP_API_URL}/groups`);
       this.groups = response.data;
     } catch (err) {
       console.error('Failed to fetch groups:', err);
@@ -208,7 +208,7 @@ export default {
       this.generatedMessage = '';
       
       try {
-        const response = await axios.post('http://127.0.0.1:8000/generate-message', {
+        const response = await axios.post(`${process.env.VUE_APP_API_URL}/generate-message`, {
           prompt: this.prompt
         });
         
@@ -268,13 +268,14 @@ export default {
             // Use the selected group ID
             recipients = { groupId: this.selectedGroup };
             break;
-          case 'upload':
+          case 'upload': {
             // Handle file upload
             const formData = new FormData();
             formData.append('file', this.uploadedFile);
             recipients = { file: formData };
             break;
-          case 'paste':
+          }
+          case 'paste': {
             // Process pasted numbers
             recipients = {
               numbers: this.pastedNumbers
@@ -283,9 +284,10 @@ export default {
                 .filter(n => n)
             };
             break;
+          }
         }
         
-        await axios.post('http://127.0.0.1:8000/broadcast-message', {
+        await axios.post(`${process.env.VUE_APP_API_URL}/broadcast-message`, {
           message: this.displayMessage,
           recipients,
           type: this.selectedAudienceType
